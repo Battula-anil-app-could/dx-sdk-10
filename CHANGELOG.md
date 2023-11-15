@@ -17,7 +17,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - `#[payment_nonce]` endpoint argument annotation
 - `#[payable]` annotation no longer allowed without argument
 
-## [dharitri-wasm 0.16.2, mandos 0.7.2] - 2021-05-20
+## [dharitri-wasm 0.16.2, mandos 0.0.4] - 2021-05-20
 - New implementation for the `Try` trait for `SCResult`, in accordance to feature `try_trait_v2`
 - Published DNS module, which helps contracts register usernames for themselves
 - `DCTLocalRole` more expressive type ABI
@@ -197,7 +197,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Attempted to optimize the serializer to use "fast exit" closures. It worked, but the resulting bytecode size was not satisfactory. Even though it was completely replaced and never got to be used, it historically remains the solution of this release.
 - Some of the storage/argument/result trait refactorings, survived.
 
-## [dharitri-wasm 0.7.2] - 2020-10-16
+## [dharitri-wasm 0.0.4] - 2020-10-16
 - small int EI
 - minor refactors, serialization fixes
 

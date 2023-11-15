@@ -30,5 +30,5 @@ version = "0.0.40"
 path = "../dharitri-wasm"
 
 [dependencies.mandos]
-version = "0.7.2"
+version = "0.0.4"
 path = "../mandos"
