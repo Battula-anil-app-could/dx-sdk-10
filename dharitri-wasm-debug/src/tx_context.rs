@@ -206,7 +206,7 @@ pub struct TxLog {
 }
 
 impl TxLog {
-	pub fn equals(&self, check_log: &mandos::CheckLog) -> bool {
+	pub fn equals(&self, check_log: &denali::CheckLog) -> bool {
 		if self.address.to_vec() == check_log.address.value
 			&& self.identifier == check_log.identifier.value
 			&& self.data == check_log.data.value

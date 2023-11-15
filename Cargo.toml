@@ -3,7 +3,7 @@ members = [
   "dharitri-wasm",
   "dharitri-wasm-debug",
   "dharitri-wasm-derive",
-  "mandos",
+  "denali",
   "dharitri-codec-derive",
 
   "contracts/benchmarks/str-repeat",

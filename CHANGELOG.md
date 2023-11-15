@@ -10,22 +10,22 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - cryptography: elliptic curves
 
 ## [dharitri-wasm 0.0.40] - 2021-05-28
-- Integration tests can now call Arwen-Mandos (mandos-go)
+- Integration tests can now call Arwen-Denali (denali-go)
 - Send API refactoring and cleanup
 	- DCT builtin function calls no longer require explicit gas
 	- sync calls and transfer-execute no longer require explicit gas
 - `#[payment_nonce]` endpoint argument annotation
 - `#[payable]` annotation no longer allowed without argument
 
-## [dharitri-wasm 0.16.2, mandos 0.0.4] - 2021-05-20
+## [dharitri-wasm 0.16.2, denali 0.0.4] - 2021-05-20
 - New implementation for the `Try` trait for `SCResult`, in accordance to feature `try_trait_v2`
 - Published DNS module, which helps contracts register usernames for themselves
 - `DCTLocalRole` more expressive type ABI
 
-## [dharitri-wasm 0.16.1, mandos 0.7.1] - 2021-05-18
-- Improvements in mandos-rs: username, contract owner, nested async calls
+## [dharitri-wasm 0.16.1, denali 0.7.1] - 2021-05-18
+- Improvements in denali-rs: username, contract owner, nested async calls
 
-## [dharitri-wasm 0.16.0, mandos 0.7.0, dharitri-codec 0.0.40] - 2021-05-14
+## [dharitri-wasm 0.16.0, denali 0.7.0, dharitri-codec 0.0.40] - 2021-05-14
 ### Major redesign of important framework components:
 - The arguments to contract/module/proxy annotations are gone. All items are generated in the same Rust module. Both submodule inclusion and contract calls are now Rust-module-aware.
 - Submodule imports are now expressed as supertraits instead of the module getter annotated methods. Note: explicitly specifying the Rust module is required, in order for the framework to fetch generated types and functions from that module.
@@ -38,8 +38,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Contracts can define proxy getter methods using the `#[proxy]` annotation.
 - Callbacks can now have names, just like endpoints. This name gets saved in the callback closure in storage, but has no other impact on the contract. The reason I needed it was to help me with defining callback forwarders and avoiding some name collisions there. Callback forwarders are still needed for a little longer, until module callbacks are properly implemented.
 
-### Mandos
-- mandos-rs syntax synchronized with mandos-go (`sc:` syntax, new DCT call value syntax, _no NFTs yet_).
+### Denali
+- denali-rs syntax synchronized with denali-go (`sc:` syntax, new DCT call value syntax, _no NFTs yet_).
 
 ## [dharitri-wasm 0.15.1] - 2021-04-30
 - Mitigating nested sync calls with Send API `execute_on_dest_context_raw_custom_result_range`
@@ -54,12 +54,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Minor refactoring in the dharitri-codec 
 
 ## [dharitri-wasm 0.14.2] - 2021-03-29
-- Fixed contract call/callback logs in mandos-rs
+- Fixed contract call/callback logs in denali-rs
 
 ## [dharitri-wasm 0.14.1] - 2021-03-25
 - Unified variadic arguments with respective variadic results
 
-## [dharitri-wasm 0.14.0, mandos 0.6.0, dharitri-codec 0.5.1] - 2021-03-22
+## [dharitri-wasm 0.14.0, denali 0.6.0, dharitri-codec 0.5.1] - 2021-03-22
 - DCT functionality:
 	- DCT system smart contract proxy, though which it is possible to mint, burn, issue, freeze, pause, etc.
 	- Endpoints to handle NFTs. Also added NFT management in the  DCT system smart contract proxy
@@ -70,7 +70,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Improvements in storage mappers:
 	- VecMapper length is now lazy
 	- UserMapper more functionality
-- Mandos
+- Denali
 	- `scQuery` step
 	- fixed defaults: unspecified fields now check the default value instead of being ignored
 	- check logs
@@ -98,7 +98,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 	- callbacks now specified programmatically
 	- got rid of the `#[callback_arg]` annotation
 
-## [dharitri-wasm 0.11.0, dharitri-codec 0.5.0, mandos 0.5.0] - 2021-02-05
+## [dharitri-wasm 0.11.0, dharitri-codec 0.5.0, denali 0.5.0] - 2021-02-05
 ### Refactor
 - Major refactoring of the contract API: split into smaller traits
 ### Added
@@ -110,8 +110,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 	- created SendApi, which groups all functionality related to sending tokens and interactions with other contracts
     - integrated the new TransferDCT hook from Arwen
     - added an unsafe buffer for handling values before transfer
-    - mandos-rs fixes
-    - contracts now use the new API + more mandos tests
+    - denali-rs fixes
+    - contracts now use the new API + more denali tests
 - Call Value API refactor and `#[payable]` updates:
 	- Main features:
     	- `#[payable]` annotation more versatile: `#[payable("MOAX")]` `#[payable("TOKEN-ID")]` `#[payable("*")]`
@@ -120,7 +120,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
     	- a new TokenIdentifier type that encodes the MOAX special token and any DCT token
     	- a new `#[token_identifier]` argument attribute provides the token id. Similar to `#[payment]` it is a fake argument, not exported.
     	- ABI updated ("payableInTokens" is no longer restricted to "MOAX")
-    	- all new features covered by mandos tests
+    	- all new features covered by denali tests
     	- async proxies still only accept `#[payable("MOAX")]`, but that is for future updates
 	- Less visible changes:
     	- all call value hooks now grouped in a new CallValueApi
@@ -133,15 +133,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - ABI enum discriminants generation
 ### Fixed
 - Crypto API fixes:
-	- `keccak256:` prefix also supported in mandos
-    - reorganized crypto mandos tests in basic-features
-    - mandos-rs was accidentally providing keccak256 instead of sha256
+	- `keccak256:` prefix also supported in denali
+    - reorganized crypto denali tests in basic-features
+    - denali-rs was accidentally providing keccak256 instead of sha256
 
 
 ## [dharitri-wasm 0.10.5] - 2021-01-27
 - Temporary fix: callbacks allow error message argument to be missing
 
-## [dharitri-wasm 0.10.4, mandos 0.4.2] - 2021-01-13
+## [dharitri-wasm 0.10.4, denali 0.4.2] - 2021-01-13
 - Codec derive with defaults
 - Storage mapper infrastructure
 
@@ -151,7 +151,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [dharitri-wasm 0.10.2, dharitri-codec 0.4.2] - 2020-12-28
 - Codec type hygene
 
-## [dharitri-wasm 0.10.1, dharitri-codec 0.4.1, mandos 0.4.1] - 2020-12-23
+## [dharitri-wasm 0.10.1, dharitri-codec 0.4.1, denali 0.4.1] - 2020-12-23
 - Minor fixes, support for strings
 
 ## [dharitri-wasm 0.10.0, dharitri-codec 0.4.0] - 2020-12-21
@@ -159,10 +159,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - ABI generation framework
 - New example contracts
 
-## [dharitri-wasm 0.9.8, dharitri-codec 0.3.2, mandos 0.3.1] - 2020-11-23
+## [dharitri-wasm 0.9.8, dharitri-codec 0.3.2, denali 0.3.1] - 2020-11-23
 - SC deploy API
 
-## [dharitri-wasm 0.9.7, dharitri-codec 0.3.1, mandos 0.3.0] - 2020-11-11
+## [dharitri-wasm 0.9.7, dharitri-codec 0.3.1, denali 0.3.0] - 2020-11-11
 - Monomorphization via codec trait instead of TypeInfo for arguments and storage
 - Reorganized all contracts in the `contracts` folder
 
@@ -187,7 +187,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [dharitri-wasm 0.9.1] - 2020-11-05
 - BigUint serialization bugfix
 
-## [dharitri-wasm 0.9.0, dharitri-codec 0.3.0, mandos 0.2.0] - 2020-11-04
+## [dharitri-wasm 0.9.0, dharitri-codec 0.3.0, denali 0.2.0] - 2020-11-04
 - Serialization completely refactored to use "fast exit" methods
 - Storage/argument/result traits completely redesigned, simplified and optimized
 - Completely ditched the approach from dharitri-wasm 0.8.0.
@@ -205,9 +205,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Avoid function selector infinite loop
 - Crowdfunding contract initial commit
 
-## [dharitri-wasm 0.7.0, mandos 0.1.0] - 2020-10-06
+## [dharitri-wasm 0.7.0, denali 0.1.0] - 2020-10-06
 - Code coverage now possible
-- Mandos in Rust
+- Denali in Rust
 - Modules properly integrated in the build process
 
 ## [dharitri-wasm 0.6.2] - 2020-09-16

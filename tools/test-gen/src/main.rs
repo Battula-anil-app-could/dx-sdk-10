@@ -33,13 +33,13 @@ fn read_dirs(path: &str) -> Vec<String> {
 	names
 }
 
-fn print_mandos_rs(file: &mut File, names: &[String]) {
+fn print_denali_rs(file: &mut File, names: &[String]) {
 	for name in names.iter() {
 		writeln!(
 			file,
 			"#[test]
 fn {}_rs() {{
-    dharitri_wasm_debug::mandos_rs(\"mandos/{}.scen.json\", &contract_map());
+    dharitri_wasm_debug::denali_rs(\"denali/{}.scen.json\", &contract_map());
 }}
 ",
 			name.replace('-', "_").to_lowercase(),
@@ -49,13 +49,13 @@ fn {}_rs() {{
 	}
 }
 
-fn print_mandos_go(file: &mut File, names: &[String]) {
+fn print_denali_go(file: &mut File, names: &[String]) {
 	for name in names.iter() {
 		writeln!(
 			file,
 			"#[test]
 fn {}_go() {{
-    dharitri_wasm_debug::mandos_go(\"mandos/{}.scen.json\");
+    dharitri_wasm_debug::denali_go(\"denali/{}.scen.json\");
 }}
 ",
 			name.replace('-', "_").to_lowercase(),
@@ -66,16 +66,16 @@ fn {}_go() {{
 }
 
 /// Example run:
-/// `cargo run ../../contracts/examples/erc20/mandos`
+/// `cargo run ../../contracts/examples/erc20/denali`
 fn main() {
 	let args: Vec<String> = env::args().collect();
 	let files_path = &args[1];
 
 	let names = read_dirs(files_path);
 
-	let mut rs_file = File::create("mandos_rs_test.rs").unwrap();
-	print_mandos_rs(&mut rs_file, names.as_slice());
+	let mut rs_file = File::create("denali_rs_test.rs").unwrap();
+	print_denali_rs(&mut rs_file, names.as_slice());
 
-	let mut go_file = File::create("mandos_go_test.rs").unwrap();
-	print_mandos_go(&mut go_file, names.as_slice());
+	let mut go_file = File::create("denali_go_test.rs").unwrap();
+	print_denali_go(&mut go_file, names.as_slice());
 }

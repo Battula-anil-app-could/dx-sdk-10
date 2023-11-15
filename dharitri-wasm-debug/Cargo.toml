@@ -29,6 +29,6 @@ arwen-tests = []
 version = "0.0.40"
 path = "../dharitri-wasm"
 
-[dependencies.mandos]
+[dependencies.denali]
 version = "0.0.4"
-path = "../mandos"
+path = "../denali"

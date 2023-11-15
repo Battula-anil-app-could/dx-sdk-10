@@ -1,12 +1,12 @@
 pub mod abi_json;
 pub mod api;
-mod arwen_mandos_runner;
+mod arwen_denali_runner;
 mod async_data;
 mod blockchain_mock;
 mod builtin_func_exec;
 mod contract_map;
 mod display_util;
-mod execute_mandos;
+mod execute_denali;
 mod mock_error;
 mod tx_context;
 
@@ -18,8 +18,8 @@ pub use display_util::*;
 pub use mock_error::*;
 pub use tx_context::*;
 
-pub use arwen_mandos_runner::mandos_go;
-pub use execute_mandos::mandos_rs;
+pub use arwen_denali_runner::denali_go;
+pub use execute_denali::denali_rs;
 
 #[macro_use]
 extern crate alloc;

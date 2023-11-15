@@ -917,9 +917,9 @@ fn contract_map() -> dharitri_wasm_debug::ContractMap<dharitri_wasm_debug::TxCon
 }
 
 #[test]
-fn test_mandos() {
-	dharitri_wasm_debug::mandos_rs(
-		"../contracts/examples/adder/mandos/adder.scen.json",
+fn test_denali() {
+	dharitri_wasm_debug::denali_rs(
+		"../contracts/examples/adder/denali/adder.scen.json",
 		&contract_map(),
 	);
 }
